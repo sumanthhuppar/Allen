@@ -6,6 +6,7 @@
     </title>
     <script src="https://cdn.tailwindcss.com">
     </script>
+    <script type="text/javascript" async src="//cdn.evgnet.com/beacon/kasmotechnologies/allen/scripts/evergage.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
     <style>
@@ -51,7 +52,7 @@
        <i class="fas fa-phone-alt text-lg">
        </i>
       </button>
-      <button class="text-[#004AAD] border border-[#004AAD] rounded-full px-5 py-1.5 text-[13px] font-semibold hover:bg-[#004AAD] hover:text-white transition">
+      <button id="login-link" class="text-[#004AAD] border border-[#004AAD] rounded-full px-5 py-1.5 text-[13px] font-semibold hover:bg-[#004AAD] hover:text-white transition">
        Login
       </button>
      </div>
@@ -742,5 +743,57 @@
      </div>
     </footer>
    
-  
+  <!-- Login Side Panel -->
+  <div id="login-panel-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"></div>
+  <aside id="login-panel" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-between items-center p-4 border-b">
+      <h2 class="text-lg font-semibold text-[#0033a0]">Login</h2>
+      <button id="close-login-panel" class="text-gray-700 hover:text-blue-700 text-2xl font-bold">&times;</button>
+    </div>
+    <form class="p-6 space-y-4">
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1" for="login-email">Email</label>
+        <input class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-700" id="login-email" type="email" placeholder="Enter your email" required>
+      </div>
+      <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1" for="login-email">Mobile Number</label>
+          <input class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-700" id="login-email" type="email" placeholder="Enter your Mobile Number" required>
+        </div>
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1" for="login-password">Password</label>
+        <input class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-700" id="login-password" type="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="w-full bg-[#0033a0] text-white font-semibold py-2 rounded hover:bg-[#002080]">Login</button>
+    </form>
+  </aside>
+  <script>
+   // Mobile menu toggle
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Login side panel functionality
+    const loginLink = document.getElementById('login-link');
+    const loginPanel = document.getElementById('login-panel');
+    const loginPanelOverlay = document.getElementById('login-panel-overlay');
+    const closeLoginPanel = document.getElementById('close-login-panel');
+
+    function openLoginPanel(e) {
+      e.preventDefault();
+      loginPanel.classList.remove('translate-x-full');
+      loginPanelOverlay.classList.remove('hidden');
+    }
+
+    function closePanel() {
+      loginPanel.classList.add('translate-x-full');
+      loginPanelOverlay.classList.add('hidden');
+    }
+
+    loginLink.addEventListener('click', openLoginPanel);
+    closeLoginPanel.addEventListener('click', closePanel);
+    loginPanelOverlay.addEventListener('click', closePanel);
+  </script>
+
   </body></html>
