@@ -10,6 +10,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
     <style>
+      .group:hover .group-hover\:opacity-100 {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
      body {
         font-family: 'Inter', sans-serif;
       }
@@ -33,9 +37,15 @@
      <div class="flex items-center space-x-6">
         <a href="/"><img alt="ALLEN Logo black background with white text" class="w-28 h-auto" height="40" src="https://upload.wikimedia.org/wikipedia/commons/d/db/ALLEN_Career_Institute_logo.svg" width="120" ></a>
       <nav class="hidden md:flex space-x-6 text-sm font-semibold text-gray-700">
-       <a class="hover:text-blue-600" href="#">
-        Courses
-       </a>
+        <div class="relative group">
+          <a class="hover:text-blue-700 cursor-pointer" href="Course_list.html">
+            Courses
+          </a>
+          <div class="absolute left-0 top-full min-w-[10rem] bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200 z-20">
+            <a href="Neet_Course_list.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">NEET</a>
+            <a href="Jee_Course_list.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">JEE</a>
+          </div>
+        </div>
        <a class="hover:text-blue-600" href="#">
         Test Series
        </a>
